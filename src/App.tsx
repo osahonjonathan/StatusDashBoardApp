@@ -38,7 +38,7 @@ function App() {
           setDeveloperName={setDeveloperName}
         />
 
-        <main className="mt-3 p-8 h-[90vh]">
+        <main className="mt-3 p-8 ">
           <Suspense fallback={<Spinner />}>
             {selectedRole === 'Developer' && (
               <DeveloperView developerName={developerName} />
