@@ -1,0 +1,156 @@
+import type { Project } from "./model/project";
+
+
+
+export const initialProjectsData: Project[] = [
+  {
+    id: 'proj-1',
+    name: 'E-commerce Platform Relaunch',
+    description:
+      'Revamping the entire e-commerce platform with new features and improved performance.',
+    milestones: [
+      { id: 'mil-1-1', name: 'Discovery & Planning', progress: 100 },
+      { id: 'mil-1-2', name: 'Design & Prototyping', progress: 80 },
+      { id: 'mil-1-3', name: 'Backend Development', progress: 60 },
+      { id: 'mil-1-4', name: 'Frontend Development', progress: 40 },
+      { id: 'mil-1-5', name: 'Testing & QA', progress: 10 },
+      { id: 'mil-1-6', name: 'Deployment', progress: 0 },
+    ],
+    tasks: [
+      {
+        id: 'task-1-1',
+        projectId: 'proj-1',
+        name: 'Define user stories',
+        assignedTo: 'Alice',
+        status: 'Completed',
+        progress: 100,
+      },
+      {
+        id: 'task-1-2',
+        projectId: 'proj-1',
+        name: 'Create wireframes',
+        assignedTo: 'Bob',
+        status: 'In Progress',
+        progress: 75,
+      },
+      {
+        id: 'task-1-3',
+        projectId: 'proj-1',
+        name: 'Set up database schema',
+        assignedTo: 'Charlie',
+        status: 'In Progress',
+        progress: 50,
+      },
+      {
+        id: 'task-1-4',
+        projectId: 'proj-1',
+        name: 'Develop API endpoints',
+        assignedTo: 'Alice',
+        status: 'Not Started',
+        progress: 0,
+      },
+      {
+        id: 'task-1-5',
+        projectId: 'proj-1',
+        name: 'Build login page UI',
+        assignedTo: 'Bob',
+        status: 'Not Started',
+        progress: 0,
+      },
+      {
+        id: 'task-1-6',
+        projectId: 'proj-1',
+        name: 'Write unit tests for backend',
+        assignedTo: 'Charlie',
+        status: 'Not Started',
+        progress: 0,
+      },
+    ],
+  },
+  {
+    id: 'proj-2',
+    name: 'Internal CRM System Upgrade',
+    description:
+      'Upgrading the existing CRM system to support new sales workflows and integrations.',
+    milestones: [
+      { id: 'mil-2-1', name: 'Requirements Gathering', progress: 100 },
+      { id: 'mil-2-2', name: 'System Architecture', progress: 90 },
+      { id: 'mil-2-3', name: 'Module Development', progress: 30 },
+      { id: 'mil-2-4', name: 'User Acceptance Testing', progress: 0 },
+      { id: 'mil-2-5', name: 'Go-Live', progress: 0 },
+    ],
+    tasks: [
+      {
+        id: 'task-2-1',
+        projectId: 'proj-2',
+        name: 'Interview sales team',
+        assignedTo: 'Alice',
+        status: 'Completed',
+        progress: 100,
+      },
+      {
+        id: 'task-2-2',
+        projectId: 'proj-2',
+        name: 'Design new data models',
+        assignedTo: 'Charlie',
+        status: 'In Progress',
+        progress: 80,
+      },
+      {
+        id: 'task-2-3',
+        projectId: 'proj-2',
+        name: 'Implement lead management module',
+        assignedTo: 'Bob',
+        status: 'Not Started',
+        progress: 0,
+      },
+    ],
+  },
+  {
+    id: 'proj-3',
+    name: 'Mobile App Development',
+    description: 'Developing a new mobile application for customer engagement.',
+    milestones: [
+      { id: 'mil-3-1', name: 'Concept & Wireframing', progress: 100 },
+      { id: 'mil-3-2', name: 'UI/UX Design', progress: 100 },
+      { id: 'mil-3-3', name: 'iOS Development', progress: 70 },
+      { id: 'mil-3-4', name: 'Android Development', progress: 50 },
+      { id: 'mil-3-5', name: 'Beta Testing', progress: 0 },
+      { id: 'mil-3-6', name: 'App Store Submission', progress: 0 },
+    ],
+    tasks: [
+      {
+        id: 'task-3-1',
+        projectId: 'proj-3',
+        name: 'Sketch app flows',
+        assignedTo: 'Bob',
+        status: 'Completed',
+        progress: 100,
+      },
+      {
+        id: 'task-3-2',
+        projectId: 'proj-3',
+        name: 'Design app screens',
+        assignedTo: 'Alice',
+        status: 'Completed',
+        progress: 100,
+      },
+      {
+        id: 'task-3-3',
+        projectId: 'proj-3',
+        name: 'Implement iOS user authentication',
+        assignedTo: 'Charlie',
+        status: 'In Progress',
+        progress: 70,
+      },
+      {
+        id: 'task-3-4',
+        projectId: 'proj-3',
+        name: 'Implement Android push notifications',
+        assignedTo: 'Bob',
+        status: 'Not Started',
+        progress: 0,
+      },
+    ],
+  },
+];
