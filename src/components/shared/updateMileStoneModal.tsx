@@ -1,34 +1,29 @@
 import { useState, type FormEvent, memo } from 'react';
 import type { Milestone } from '../../model/project';
+import { useProjects } from '../../hooks/useProject';
 
 interface UpdateMilestoneModalProps {
   milestone: Milestone & { projectId: string };
-  onClose: () => void;
-  updateMilestoneProgress: (
-    projectId: string,
-    milestoneId: string,
-    newProgress: number
-  ) => void;
+  closeUpdateMilestoneModal: () => void;
 }
 
 export const UpdateMilestoneModal = memo(
-  ({
-    milestone,
-    onClose,
-    updateMilestoneProgress,
-  }: UpdateMilestoneModalProps) => {
+  ({ milestone, closeUpdateMilestoneModal }: UpdateMilestoneModalProps) => {
+    const { updateMilestoneProgress } = useProjects();
+
     const [newMilestoneProgress, setNewMilestoneProgress] = useState<number>(
       milestone.progress
     );
 
     const handleSubmit = (e: FormEvent) => {
       e.preventDefault();
+
       updateMilestoneProgress(
         milestone.projectId,
         milestone.id,
         newMilestoneProgress
       );
-      onClose();
+      closeUpdateMilestoneModal();
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +63,7 @@ export const UpdateMilestoneModal = memo(
             <div className="flex justify-end space-x-3">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={closeUpdateMilestoneModal}
                 className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition duration-300"
               >
                 Cancel

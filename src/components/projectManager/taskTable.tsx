@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import React from 'react';
 import type { Task } from '../../model/project';
 
 type TaskTableProps = {
   tasks: Task[];
 };
 
-export const TaskTable = memo(({ tasks }: TaskTableProps) => {
+export const TaskTable = React.memo(({ tasks }: TaskTableProps) => {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white rounded-lg overflow-hidden">

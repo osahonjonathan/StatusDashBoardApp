@@ -19,10 +19,7 @@ function App() {
   const [selectedRole, setSelectedRole] = useState<string>('Developer');
   const [developerName, setDeveloperName] = useState<string>('Alice');
 
-  // The values for roles and developers are being memoized to avoid unnecessary re-renders.
-  // In a real-life scenario, these values might be fetched from an API or come from a config file.
-  // Since we don't want this array to be recreated on every render unless the data itself changes,
-  // we use useMemo to keep it stable — especially useful when passed to child components.
+  
   const roles = useMemo(() => ['Developer', 'PM', 'Executive'], []);
   const developers = useMemo(() => ['Alice', 'Bob', 'Charlie'], []);
 

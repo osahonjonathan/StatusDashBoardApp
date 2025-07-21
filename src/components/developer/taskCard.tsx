@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import type { Task } from '../../model/project';
 import { ProgressBar } from '../shared/progressBar';
+import { useProjects } from '../../hooks/useProject';
 
 interface TaskWithProjectName extends Task {
   projectName: string;
@@ -9,15 +10,34 @@ interface TaskWithProjectName extends Task {
 
 interface TaskCardProps {
   task: TaskWithProjectName;
-  onUpdate: (
+}
+
+export const TaskCard = memo(({ task }: TaskCardProps) => {
+  const { updateTask } = useProjects();
+  const handleTaskUpdate = (
     taskId: string,
     projectId: string,
     currentProgress: number,
     direction: 'increase' | 'decrease'
-  ) => void;
-}
+  ) => {
+    let newProgress = currentProgress;
 
-export const TaskCard = memo(({ task, onUpdate }: TaskCardProps) => {
+    if (direction === 'increase') {
+      newProgress = Math.min(currentProgress + 10, 100);
+    } else if (direction === 'decrease') {
+      newProgress = Math.max(currentProgress - 10, 0);
+    }
+
+    const newStatus: Task['status'] =
+      newProgress === 100
+        ? 'Completed'
+        : newProgress === 0
+        ? 'Not Started'
+        : 'In Progress';
+
+    updateTask(projectId, taskId, newStatus, newProgress);
+  };
+
   return (
     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm flex flex-col justify-between">
       <div>
@@ -48,7 +68,7 @@ export const TaskCard = memo(({ task, onUpdate }: TaskCardProps) => {
       <div className="mt-auto flex justify-between items-center gap-2">
         <button
           onClick={() =>
-            onUpdate(task.id, task.projectId, task.progress, 'decrease')
+            handleTaskUpdate(task.id, task.projectId, task.progress, 'decrease')
           }
           disabled={task.progress === 0}
           className={`px-3 py-1 rounded-md font-medium transition duration-300 ${
@@ -64,7 +84,7 @@ export const TaskCard = memo(({ task, onUpdate }: TaskCardProps) => {
 
         <button
           onClick={() =>
-            onUpdate(task.id, task.projectId, task.progress, 'increase')
+            handleTaskUpdate(task.id, task.projectId, task.progress, 'increase')
           }
           disabled={task.progress === 100}
           className={`px-3 py-1 rounded-md font-medium transition duration-300 ${

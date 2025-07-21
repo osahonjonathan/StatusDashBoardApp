@@ -1,9 +1,17 @@
 import { useProjects } from '../../hooks/useProject';
+import { useProjectModals } from '../../hooks/useProjectModals';
+import { AddTaskModal } from '../shared/addTaskModal';
 
 import { ProjectCard } from './projectCard';
 
 const ProjectManagerView = () => {
-  const { projects, addTask, updateMilestoneProgress } = useProjects();
+  const { projects } = useProjects();
+  const {
+    showAddTaskModal,
+    selectedProjectIdForTask,
+    openAddTaskModal,
+    closeAddTaskModal,
+  } = useProjectModals();
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg">
@@ -15,10 +23,16 @@ const ProjectManagerView = () => {
         <ProjectCard
           key={project.id}
           project={project}
-          onAddTask={addTask}
-          updateMilestoneProgress={updateMilestoneProgress}
+          openAddTaskModal={openAddTaskModal}
         />
       ))}
+
+      {showAddTaskModal && selectedProjectIdForTask && (
+        <AddTaskModal
+          projectId={selectedProjectIdForTask}
+          closeAddTaskModal={closeAddTaskModal}
+        />
+      )}
     </div>
   );
 };
